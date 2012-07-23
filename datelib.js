@@ -19,6 +19,9 @@ exports.prettify = function (d) {
         d = new Date(d);
     }
     var now = new Date(),
+        yyyy,
+        mm,
+        dd,
         diff = ((now.getTime() - d.getTime()) / 1000),
         day_diff = Math.floor(diff / 86400);
 
@@ -37,9 +40,9 @@ exports.prettify = function (d) {
     if (day_diff < 7)   return day_diff + " days ago";
     if (day_diff < 31)  return Math.ceil( day_diff / 7 ) + " weeks ago";
 
-    var yyyy = d.getFullYear();
-    var mm = d.getMonth();
-    var dd = d.getDate();
+    yyyy = d.getFullYear();
+    mm = d.getMonth() + 1;
+    dd = d.getDate();
 
     return yyyy + '-' + mm + '-' + dd;
 };
